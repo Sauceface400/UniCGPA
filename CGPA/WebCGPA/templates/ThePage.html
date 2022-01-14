@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<body class="TaxesPage">
+
+    {% for score in total %}
+        <!-- this is to add all the 4 subject marks and devide it by 4 -->
+        <h1 class="text-muted" style="margin: 10px; position: absolute; right: 600px;">{{ (score.subjectOne + score.subjectTwo + score.subjectThree + score.subjectFour)/4 | float }}</h1>
+    {% endfor %}
+
+    <h1>Please enter the amount</h1>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group" style="position: absolute; top: 200px; right: 550px;">
+            <div class="form-group">
+                {{ form.subjectOne(class="form-control form-control-lg") }}<br>
+                {{ form.subjectTwo(class="form-control form-control-lg") }}<br>
+                {{ form.subjectThree(class="form-control form-control-lg") }}<br>
+                {{ form.subjectFour(class="form-control form-control-lg") }}
+            </div>
+        </div>
+        <div class="form-group" style="position: absolute; top: 300px; right: 600px;">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+    <a href="{{ url_for('remove') }}" style="position: absolute; top: 350px; right: 610px;">Home</a>
+</body>
+{% endblock %}
+<!-- left off -->
